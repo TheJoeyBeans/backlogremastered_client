@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import Search from './Search/Search';
+import GameDisplay from './GameDisplay/GameDisplay';
 import Grid from '@material-ui/core/Grid';
 import styles from './Home.module.css';
+import searchForGame from '../../utils/SteamAPICalls/searchForGame';
 
 function Home() {   
     const [selectedGame, setSelectedGame] = useState(null); 
 
     const fetchSelectedGame = async (selectedGame) =>{
-        console.log(selectedGame);
-        console.log("Selected game in home component!");
+        const retrievedGame = await searchForGame(selectedGame.gameId);
+        setSelectedGame(retrievedGame);
     }
 
     return (
@@ -20,6 +22,14 @@ function Home() {
                 <Grid item xs={12}>
                     <Search fetchSelectedGame={fetchSelectedGame}/>
                 </Grid>
+                {
+                    selectedGame !== null ?
+                    <Grid item xs={12}>
+                        <GameDisplay selectedGame={selectedGame}/>
+                    </Grid>
+                                          :
+                    null
+                }
             </Grid>
         </div>
     );

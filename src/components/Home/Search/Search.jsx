@@ -21,6 +21,7 @@ function Search({fetchSelectedGame}) {
         }
     }, [searchQuery]);
 
+    //Carries out search once timeout is fulfilled in useEffect
     const fetchedSearchResults = async (searchQuery) =>{
         setCurrentlySearching(true);
         const returnedResults = await searchSteamForGame(searchQuery);
@@ -28,6 +29,7 @@ function Search({fetchSelectedGame}) {
         setCurrentlySearching(false);
     }
 
+    //Selects game from list of search results and sends back to Home component. 
     const selectGame = (inputValue) =>{
         if(inputValue !== null){
             const selectedGame = fetchedResults.find(({title}) => title === inputValue)
@@ -38,7 +40,8 @@ function Search({fetchSelectedGame}) {
     return (
         <div>
             <Autocomplete
-                id="free-solo-demo"
+                id="searchComponent_autoComplete"
+                data-testid="autoComplete"
                 freeSolo
                 options={fetchedResults.map((option) => option.title)}
                 loading={currentlySearching}

@@ -1,12 +1,15 @@
 import axios from 'axios';
 
-const userRegister = async () =>{
+const userRegister = async (userData) =>{
 
-    const res  = await axios.get(`http://localhost:4000/auth/get`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    console.log(userData);
+    console.log("THE USER DATA");
+
+    // const res  = await axios.get(`http://localhost:4000/auth/register`, {
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // });
 
 }
 

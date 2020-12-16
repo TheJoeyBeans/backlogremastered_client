@@ -15,8 +15,6 @@ function SignUp() {
     });
     
     const handleChange = (prop) => (event) => {
-        console.log(prop);
-        console.log(event.target.value)
         setValues({ ...values, [prop]: event.target.value });
     };
 

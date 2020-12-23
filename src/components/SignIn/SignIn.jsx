@@ -3,12 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
-import userRegister from '../../utils/userAuth/userRegister';
 import { Link } from 'react-router-dom';
+import userLogin from '../../utils/userAuth/userLogin';
 
-import styles from './SignUp.module.css';
+import styles from './SignIn.module.css';
 
-function SignUp() {   
+function SignIn() {   
     const [values, setValues] = useState({
         username: '',
         email: '',
@@ -27,15 +27,15 @@ function SignUp() {
             password: values.password 
         }
 
-        const retrievedUser = await userRegister(userBody);
+        const retrievedUser = await userLogin(userBody);
     }
 
     return (    
         <Grid>
             <Grid container>
                 <Grid item xs={12}>
-                    <h1>Register For An Account</h1>
-                    <p>Have an Account? <Link to="/signIn"><u>Login</u></Link></p>
+                    <h1>Sign In To An Account</h1>
+                    <p>New User? <Link to="/register"><u>Click Here To Register!</u></Link></p>
                 </Grid>
             </Grid>
             <Grid container>
@@ -61,4 +61,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default SignIn;
